@@ -18,7 +18,7 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Danh sách các Nhà sản xuất</h1>
+                    <h1 class="h2">Danh sách các Loại sản phẩm</h1>
                 </div>
                 <a href="create.php" class="btn btn-primary">
                     <span data-feather="create">Thêm mới</span>
@@ -28,15 +28,16 @@ if (session_id() === '') {
                 include_once(__DIR__ . '/../../../dbconnect.php');
                 // cau lenh sql 
                 $sqlSelect = <<<EOT
-                    SELECT nsx_ma, nsx_ten
-                    FROM nhasanxuat;
+                    SELECT lsp_ma, lsp_ten, lsp_mota
+                    FROM loaisanpham;
 EOT;
                 $result = mysqli_query($conn, $sqlSelect);
                 $data = [];
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $data[] = array(
-                        'nsx_ma' => $row['nsx_ma'],
-                        'nsx_ten' => $row['nsx_ten']
+                        'lsp_ma' => $row['lsp_ma'],
+                        'lsp_ten' => $row['lsp_ten'],
+                        'lsp_mota' => $row['lsp_mota']
                     );
                 }
                 ?>
@@ -44,8 +45,9 @@ EOT;
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Mã nhà sản xuất</th>
-                            <th scope="col">Tên nhà sản xuất</th>
+                            <th scope="col">Mã Loại sản phẩm</th>
+                            <th scope="col">Tên Loại sản phẩm</th>
+                            <th scope="col">Mô tả</th>
                             <th scope="col">Hành động</th>
                         </tr>
                     </thead>
@@ -55,13 +57,14 @@ EOT;
                         foreach ($data as $nsx) : ?>
                             <tr>
                                 <td scope="row"><?= $count++; ?></td>
-                                <td><?= $nsx['nsx_ma']; ?></td>
-                                <td><?= $nsx['nsx_ten']; ?></td>
+                                <td><?= $nsx['lsp_ma']; ?></td>
+                                <td><?= $nsx['lsp_ten']; ?></td>
+                                <td><?= $nsx['lsp_mota']; ?></td>
                                 <td>
-                                    <a href="edit.php?nsx_ma=<?= $nsx['nsx_ma'] ?>" class="btn btn-warning">
+                                    <a href="edit.php?lsp_ma=<?= $nsx['lsp_ma'] ?>" class="btn btn-warning">
                                         <span data-feather="edit">Sửa</span>
                                     </a>
-                                    <a href="delete.php?nsx_ma=<?= $nsx['nsx_ma'] ?>" class="btn btn-danger">
+                                    <a href="delete.php?lsp_ma=<?= $nsx['lsp_ma'] ?>" class="btn btn-danger">
                                         <span data-feather="delete">Xóa</span>
                                 </td>
                             </tr>

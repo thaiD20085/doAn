@@ -18,17 +18,21 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Thêm mới Nhà sản xuất</h1>
+                    <h1 class="h2">Thêm mới Loại sản phẩm</h1>
                 </div>
                 <a class="btn btn-primary" href="./">Quay lại</a>
                 <form action="" method="get" name="frmCreate" id="frmCreate">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Mã Nhà sản xuất</label>
-                        <input type="text" class="form-control" name="nsx_ma" id="nsx_ma" readonly>
+                        <label for="lsp_ma">Mã Loại sản phẩm</label>
+                        <input type="text" class="form-control" name="lsp_ma" id="lsp_ma" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Nhà sản xuất</label>
-                        <input type="text" class="form-control" name="nsx_ten" id="nsx_ten">
+                        <label for="lsp_ten">Tên Loại sản phẩm</label>
+                        <input type="text" class="form-control" name="lsp_ten" id="lsp_ten">
+                    </div>
+                    <div class="form-group">
+                        <label for="lsp_mota">Mô tả</label>
+                        <textarea class="form-control" name="lsp_mota" id="lsp_mota" rows="3"></textarea>
                     </div>
 
                     <button type="submit" name="btnSave" id="btnSave" class="btn btn-primary">Thêm</button>
@@ -36,11 +40,12 @@ if (session_id() === '') {
                 <?php
                 include_once(__DIR__ . '/../../../dbconnect.php');
                 if (isset($_GET['btnSave'])) {
-                    $nsx_ten = addslashes($_GET['nsx_ten']);
+                    $lsp_ten = addslashes($_GET['lsp_ten']);
+                    $lsp_mota = addslashes($_GET['lsp_mota']);
                     $sql = <<<EOT
-                        INSERT INTO nhasanxuat
-                            (nsx_ten)
-                            VALUES ('$nsx_ten')
+                    INSERT INTO loaisanpham
+                        (lsp_ten, lsp_mota)
+                        VALUES ('$lsp_ten', '$lsp_mota');
 EOT;
                     mysqli_query($conn, $sql);
                     header('Location: ./');

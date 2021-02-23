@@ -18,19 +18,19 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Thêm mới Nhà sản xuất</h1>
+                    <h1 class="h2">Thêm mới Loại sản phẩm</h1>
                 </div>
                 <a class="btn btn-primary" href="./">Quay lại</a>
                 <?php
-                if (isset($_GET['nsx_ma'])) {
+                if (isset($_GET['lsp_ma'])) {
                     
-                    $nsx_ma = $_GET['nsx_ma'];
+                    $lsp_ma = $_GET['lsp_ma'];
 
                     include_once(__DIR__ . '/../../../dbconnect.php');
                     $sql = <<<EOT
-                    SELECT nsx_ma, nsx_ten
+                    SELECT lsp_ma, lsp_ten
                         FROM nhasanxuat
-                        WHERE nsx_ma= $nsx_ma
+                        WHERE lsp_ma= $lsp_ma
 EOT;
                     $result = mysqli_query($conn , $sql);
                     $data = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -39,24 +39,24 @@ EOT;
                 ?>
                 <form action="" method="get" name="frmCreate" id="frmCreate">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Mã Nhà sản xuất</label>
-                        <input type="text" class="form-control" name="nsx_ma" id="nsx_ma" value="<?=$nsx_ma;?>" readonly>
+                        <label for="exampleInputEmail1">Mã Loại sản phẩm</label>
+                        <input type="text" class="form-control" name="lsp_ma" id="lsp_ma" value="<?=$lsp_ma;?>" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Nhà sản xuất</label>
-                        <input type="text" class="form-control" name="nsx_ten" id="nsx_ten" value="<?=$data['nsx_ten'];?>">
+                        <label for="exampleInputEmail1">Tên Loại sản phẩm</label>
+                        <input type="text" class="form-control" name="lsp_ten" id="lsp_ten" value="<?=$data['lsp_ten'];?>">
                     </div>
 
                     <button type="submit" name="btnSave" id="btnSave" class="btn btn-primary">Lưu</button>
                 </form>
                 <?php
                 if (isset($_GET['btnSave'])) {
-                    $nsx_ten = addslashes($_GET['nsx_ten']);
+                    $lsp_ten = addslashes($_GET['lsp_ten']);
                     $sql = <<<EOT
                         UPDATE nhasanxuat
                         SET
-                            nsx_ten='$nsx_ten'
-                        WHERE nsx_ma=$nsx_ma;
+                            lsp_ten='$lsp_ten'
+                        WHERE lsp_ma=$lsp_ma;
 EOT;
                     mysqli_query($conn, $sql);
                     header('Location: ./');
