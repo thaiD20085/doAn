@@ -18,7 +18,7 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Thêm mới Loại sản phẩm</h1>
+                    <h1 class="h2">Thêm mới Sản phẩm</h1>
                 </div>
                 <a class="btn btn-primary" href="./">Quay lại</a>
                 <?php

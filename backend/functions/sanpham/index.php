@@ -18,7 +18,7 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Danh sách các Loại sản phẩm</h1>
+                    <h1 class="h2">Danh sách các Sản phẩm</h1>
                 </div>
                 <a href="create.php" class="btn btn-primary">
                     <span data-feather="create">Thêm mới</span>
@@ -75,16 +75,16 @@ EOT;
                             <tr>
                                 <th>STT</th>
                                 <th>Mã</th>
-                                <th>Tên sản phẩm</th>
+                                <th>Tên</th>
                                 <th>Giá</th>
                                 <th>Giá cũ</th>
                                 <th>Mô tả ngắn</th>
                                 <th>Mô tả chi tiết</th>
                                 <th>Ngày cập nhật</th>
                                 <th>SL</th>
-                                <th>Loại sản phẩm</th>
-                                <th>Nhà sản xuất</th>
-                                <th>Khuyến mãi</th>
+                                <th>Loại</th>
+                                <th>NSX</th>
+                                <th>KM</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
