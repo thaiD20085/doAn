@@ -48,7 +48,7 @@ if (session_id() === '') {
                         VALUES ('$lsp_ten', '$lsp_mota');
 EOT;
                     mysqli_query($conn, $sql);
-                    header('Location: ./');
+                    echo "<script>location.href = 'index.php';</script>";
                 }
                 ?>
             </main>

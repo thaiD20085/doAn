@@ -28,12 +28,12 @@ if (session_id() === '') {
 
                     include_once(__DIR__ . '/../../../dbconnect.php');
                     $sql = <<<EOT
-                    SELECT lsp_ma, lsp_ten
-                        FROM nhasanxuat
-                        WHERE lsp_ma= $lsp_ma
+                    SELECT lsp_ma, lsp_ten, lsp_mota
+                        FROM loaisanpham
+                        WHERE lsp_ma= $lsp_ma;
 EOT;
                     $result = mysqli_query($conn , $sql);
-                    $data = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                    $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 }
                 else die();
                 ?>
@@ -46,20 +46,25 @@ EOT;
                         <label for="exampleInputEmail1">Tên Loại sản phẩm</label>
                         <input type="text" class="form-control" name="lsp_ten" id="lsp_ten" value="<?=$data['lsp_ten'];?>">
                     </div>
-
+                    <div class="form-group">
+                        <label for="lsp_mota">Mô tả</label>
+                        <textarea class="form-control" name="lsp_mota" id="lsp_mota" rows="3"><?=$data['lsp_mota'];?></textarea>
+                    </div>
                     <button type="submit" name="btnSave" id="btnSave" class="btn btn-primary">Lưu</button>
                 </form>
                 <?php
                 if (isset($_GET['btnSave'])) {
                     $lsp_ten = addslashes($_GET['lsp_ten']);
+                    $lsp_mota = addslashes($_GET['lsp_mota']);
                     $sql = <<<EOT
-                        UPDATE nhasanxuat
-                        SET
-                            lsp_ten='$lsp_ten'
-                        WHERE lsp_ma=$lsp_ma;
+                    UPDATE loaisanpham
+                    SET
+                        lsp_ten='$lsp_ten',
+                        lsp_mota='$lsp_mota'
+                    WHERE lsp_ma=$lsp_ma;
 EOT;
                     mysqli_query($conn, $sql);
-                    header('Location: ./');
+                    echo "<script>location.href = 'index.php';</script>";
                 }
                 ?>
             </main>

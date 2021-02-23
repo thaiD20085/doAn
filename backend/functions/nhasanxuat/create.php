@@ -43,7 +43,8 @@ if (session_id() === '') {
                             VALUES ('$nsx_ten')
 EOT;
                     mysqli_query($conn, $sql);
-                    header('Location: ./');
+                    echo "<script>location.href = 'index.php';</script>";
+
                 }
                 ?>
             </main>

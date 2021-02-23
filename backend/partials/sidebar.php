@@ -17,13 +17,25 @@
       <li class="nav-item">
         <a href="#shop_categoriesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
           Chuyên mục sản phẩm
-        </a>
+        </a> 
         <ul class="collapse" id="shop_categoriesSubMenu">
           <li class="nav-item">
-            <a href="/backend/functions/shop_categories/index.php">Danh sách</a>
+            <a href="/project-D20085/backend/functions/khachhang/">Khách hàng</a>
           </li>
           <li class="nav-item">
-            <a href="/backend/functions/shop_categories/create.php">Thêm mới</a>
+            <a href="/project-D20085/backend/functions/nhasanxuat/">Nhà sản xuất</a>
+          </li>
+          <li class="nav-item">
+            <a href="/project-D20085/backend/functions/loaisanpham/">Loại sản phẩm</a>
+          </li>
+          <li class="nav-item">
+            <a href="/project-D20085/backend/functions/sanpham/">Sản phẩm</a>
+          </li>
+          <li class="nav-item">
+            <a href="/project-D20085/backend/functions/dondathang/">Đơn đặt hàng</a>
+          </li>
+          <li class="nav-item">
+            <a href="/project-D20085/backend/functions/khuyenmai/">Khuyến mãi</a>
           </li>
         </ul>
       </li>

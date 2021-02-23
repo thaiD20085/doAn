@@ -6,5 +6,6 @@
             DELETE FROM nhasanxuat WHERE nsx_ma=$nsx_ma
 EOT;
         mysqli_query($conn, $sql);
-        header('Location: ./');
+        echo "<script>location.href = 'index.php';</script>";
+
     }
