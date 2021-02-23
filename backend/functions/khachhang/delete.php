@@ -1,9 +1,9 @@
 <?php
-    if(isset($_GET['lsp_ma'])){
-        $lsp_ma = $_GET['lsp_ma'];
+    if(isset($_GET['kh_tendangnhap'])){
+        $kh_tendangnhap = $_GET['kh_tendangnhap'];
         include_once(__DIR__ . '/../../../dbconnect.php');
         $sql = <<<EOT
-        DELETE FROM loaisanpham WHERE lsp_ma='$lsp_ma'
+        DELETE FROM khachhang WHERE kh_tendangnhap='$kh_tendangnhap'
 EOT;
         mysqli_query($conn, $sql);
         header('Location: ./');

@@ -18,23 +18,10 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Thêm mới Loại sản phẩm</h1>
+                    <h1 class="h2">Thêm mới Khách hàng</h1>
                 </div>
                 <a class="btn btn-primary" href="./">Quay lại</a>
                 <form action="" method="get" name="frmCreate" id="frmCreate">
-                    <div class="form-group">
-                        <label for="lsp_ma">Mã Loại sản phẩm</label>
-                        <input type="text" class="form-control" name="lsp_ma" id="lsp_ma" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="lsp_ten">Tên Loại sản phẩm</label>
-                        <input type="text" class="form-control" name="lsp_ten" id="lsp_ten">
-                    </div>
-                    <div class="form-group">
-                        <label for="lsp_mota">Mô tả</label>
-                        <textarea class="form-control" name="lsp_mota" id="lsp_mota" rows="3"></textarea>
-                    </div>
-
                     <button type="submit" name="btnSave" id="btnSave" class="btn btn-primary">Thêm</button>
                 </form>
                 <?php
