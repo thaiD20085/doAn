@@ -28,44 +28,28 @@ if (session_id() === '') {
                 include_once(__DIR__ . '/../../../dbconnect.php');
                 //2. cau lenh sql 
                 $sql = <<<EOT
-                SELECT *
-                FROM sanpham AS sp
-                JOIN loaisanpham AS lsp ON sp.lsp_ma = lsp.lsp_ma
-                JOIN nhasanxuat AS nsx ON sp.nsx_ma = nsx.nsx_ma
-                LEFT JOIN khuyenmai AS km on sp.km_ma = km.km_ma;
+                SELECT 
+                        ddh.dh_ma, ddh.dh_ngaylap, ddh.dh_ngaygiao, ddh.dh_noigiao, ddh.dh_trangthaithanhtoan, httt.httt_ten, kh.kh_ten, kh.kh_dienthoai
+                    , SUM(spddh.sp_dh_soluong * spddh.sp_dh_dongia) AS TongThanhTien
+                    FROM `dondathang` ddh
+                    JOIN `sanpham_dondathang` spddh ON ddh.dh_ma = spddh.dh_ma
+                    JOIN `khachhang` kh ON ddh.kh_tendangnhap = kh.kh_tendangnhap
+                    JOIN `hinhthucthanhtoan` httt ON ddh.httt_ma = httt.httt_ma
+                    GROUP BY ddh.dh_ma, ddh.dh_ngaylap, ddh.dh_ngaygiao, ddh.dh_noigiao, ddh.dh_trangthaithanhtoan, httt.httt_ten, kh.kh_ten, kh.kh_dienthoai
 EOT;
                 $result = mysqli_query($conn, $sql);
                 $data = [];
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $km_thongtin = 'Không';
-                    if (!empty($row['km_ma'])) {
-                        $km_thongtin = sprintf(
-                            "Khuyến mãi %s, nội dung %s, thời gian: %s-%s",
-                            $row['km_ten'],
-                            $row['kh_noidung'],
-                            date('d/m/Y', strtotime($row['kh_tungay'])),
-                            date('d/m/Y', strtotime($row['km_denngay']))
-                        );
-                    }
                     $data[] = array(
-                        'sp_ma' => $row['sp_ma'],
-                        'sp_ten' => $row['sp_ten'],
-                        // Sử dụng hàm number_format(số tiền, số lẻ thập phân, dấu phân cách số lẻ, dấu phân cách hàng nghìn) 
-                        // để định dạng số khi hiển thị trên giao diện. 
-                        // Vd: 15800000 -> format thành 15,800,000.66 vnđ
-                        'sp_gia' => number_format($row['sp_gia'], 2, ".", ",") . ' VNĐ',
-                        'sp_giacu' => number_format($row['sp_giacu'], 2, ".", ",") . ' VNĐ',
-                        'sp_mota_ngan' => $row['sp_mota_ngan'],
-                        'sp_mota_chitiet' => $row['sp_mota_chitiet'],
-                        'sp_ngaycapnhat' => date('d/m/Y H:i:s', strtotime($row['sp_ngaycapnhat'])),
-                        'sp_soluong' => number_format($row['sp_soluong'], 0, ".", ","),
-                        'lsp_ma' => $row['lsp_ma'],
-                        'nsx_ma' => $row['nsx_ma'],
-                        'km_ma' => $row['km_ma'],
-                        // Các cột dữ liệu lấy từ liên kết khóa ngoại
-                        'lsp_ten' => $row['lsp_ten'],
-                        'nsx_ten' => $row['nsx_ten'],
-                        'km_thongtin' => $km_thongtin,
+                        'dh_ma' => $row['dh_ma'],
+                        'dh_ngaylap' => date('d/m/Y H:i:s', strtotime($row['dh_ngaylap'])),
+                        'dh_ngaygiao' => empty($row['dh_ngaygiao']) ? '' : date('d/m/Y H:i:s', strtotime($row['dh_ngaygiao'])),
+                        'dh_noigiao' => $row['dh_noigiao'],
+                        'dh_trangthaithanhtoan' => $row['dh_trangthaithanhtoan'],
+                        'httt_ten' => $row['httt_ten'],
+                        'kh_ten' => $row['kh_ten'],
+                        'kh_dienthoai' => $row['kh_dienthoai'],
+                        'TongThanhTien' => number_format($row['TongThanhTien'], 2, ".", ",") . ' vnđ',
                     );
                 }
                 ?>
@@ -73,44 +57,57 @@ EOT;
                     <table id="tableSP" class="table table-bordered table-hover mt-2 table-sm">
                         <thead class="thead-dark">
                             <tr>
-                                <th>STT</th>
-                                <th>Mã</th>
-                                <th>Tên</th>
-                                <th>Giá</th>
-                                <th>Giá cũ</th>
-                                <th>Mô tả ngắn</th>
-                                <th>Mô tả chi tiết</th>
-                                <th>Ngày cập nhật</th>
-                                <th>SL</th>
-                                <th>Loại</th>
-                                <th>NSX</th>
-                                <th>KM</th>
+                                <th>Mã Đơn đặt hàng</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày lập</th>
+                                <th>Ngày giao</th>
+                                <th>Nơi giao</th>
+                                <th>Hình thức thanh toán</th>
+                                <th>Tổng thành tiền</th>
+                                <th>Trạng thái thanh toán</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $count = 1;
-                            foreach ($data as $sp) : ?>
+                            foreach ($data as $ddh) : ?>
                                 <tr>
-                                    <td><?=
-                                        $count++ ?></td>
-                                    <td><?= $sp['sp_ma'] ?></td>
-                                    <td><?= $sp['sp_ten'] ?></td>
-                                    <td><?= $sp['sp_gia'] ?></td>
-                                    <td><?= $sp['sp_giacu'] ?></td>
-                                    <td><?= $sp['sp_mota_ngan'] ?></td>
-                                    <td><?= $sp['sp_mota_chitiet'] ?></td>
-                                    <td><?= $sp['sp_ngaycapnhat'] ?></td>
-                                    <td><?= $sp['sp_soluong'] ?></td>
-                                    <td><?= $sp['lsp_ten'] ?></td>
-                                    <td><?= $sp['nsx_ten'] ?></td>
-                                    <td><?= $sp['km_thongtin'] ?></td>
-                                    <td>
-                                        <a href="edit.php?sp_ma=<?= $sp['sp_ma'] ?>" class="btn btn-warning">Sửa</a>
-                                        <a href="delete.php?sp_ma=<?= $sp['sp_ma'] ?>" class="btn btn-danger">Xoá</a>
-                                    </td>
-                                </tr>
+                                    <td><?= $ddh['dh_ma'] ?></td>
+                                <td><b><?= $ddh['kh_ten'] ?></b><br />(<?= $ddh['kh_dienthoai'] ?>)</td>
+                                <td><?= $ddh['dh_ngaylap'] ?></td>
+                                <td><?= $ddh['dh_ngaygiao'] ?></td>
+                                <td><?= $ddh['dh_noigiao'] ?></td>
+                                <td><span class="badge badge-primary"><?= $ddh['httt_ten'] ?></span></td>
+                                <td><?= $ddh['TongThanhTien'] ?></td>
+                                <td>
+                                    <?php if ($ddh['dh_trangthaithanhtoan'] == 0) : ?>
+                                        <span class="badge badge-danger">Chưa xử lý</span>
+                                    <?php else : ?>
+                                        <span class="badge badge-success">Đã giao hàng</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <!-- Đơn hàng nào chưa thanh toán thì được phép phép Xóa, Sửa -->
+                                    <?php if ($ddh['dh_trangthaithanhtoan'] == 0) : ?>
+                                        <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `dh_ma` -->
+                                        <a href="edit.php?dh_ma=<?= $ddh['dh_ma'] ?>" class="btn btn-warning">
+                                            Sửa
+                                        </a>
+                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
+                                        <button type="button" class="btn btn-danger btnDelete" data-dh_ma="<?= $ddh['dh_ma'] ?>">
+                                            Xóa
+                                        </button>
+                                    <?php else : ?>
+                                        <!-- Đơn hàng nào đã thanh toán rồi thì không cho phép Xóa, Sửa (không hiển thị 2 nút này ra giao diện) 
+                                        - Cho phép IN ấn ra giấy
+                                        -->
+                                        <!-- Nút in, bấm vào sẽ hiển thị mẫu in thông tin dựa vào khóa chính `dh_ma` -->
+                                        <a href="print.php?dh_ma=<?= $ddh['dh_ma'] ?>" class="btn btn-success">
+                                            In
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
                             <?php
                             endforeach;
                             mysqli_close($conn);
