@@ -19,102 +19,117 @@ if (session_id() === '') {
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
                     <h1 class="h2">Thêm mới Khách hàng</h1>
+                    <a class="btn btn-primary" href="./">Quay lại</a>
                 </div>
-                <a class="btn btn-primary" href="./">Quay lại</a>
 
-                <form action="" method="post" name="frmCreate" id="frmCreate">
-                    <div class="form-group">
-                        <label for="kh_tendangnhap">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="kh_tendangnhap" name="kh_tendangnhap" value="">
-                    </div>
+                <form action="" method="post" name="frmCreate" id="frmCreate" class="mt-2">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="kh_matkhau">Mật khẩu</label>
-                            <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="">
+                        <div class="form-group col-lg">
+                            <h5>Thông tin cơ bản<span style="color:red;">*</span></h5>
+                            <div class="form-group">
+                                <label for="kh_tendangnhap">Tên đăng nhập</label>
+                                <input type="text" class="form-control" id="kh_tendangnhap" name="kh_tendangnhap" value="">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="kh_matkhau">Mật khẩu</label>
+                                    <input type="password" class="form-control" id="kh_matkhau" name="kh_matkhau" value="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="kh_matkhau2">Nhập lại mật khẩu</label>
+                                    <input type="password" class="form-control" id="kh_matkhau2" name="kh_matkhau2" value="">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="kh_ten">Tên</label>
+                                    <input type="text" class="form-control" id="kh_ten" name="kh_ten" value="">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="kh_gioitinh">Giới tính</label>
+                                    <select class="form-control" id="kh_gioitinh" name="kh_gioitinh">
+                                        <option value="1">Nam</option>
+                                        <option value="0">Nữ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="kh_dienthoai">Điện thoại <span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="kh_dienthoai" name="kh_dienthoai" value="">
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label for="kh_email">Email <span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control" id="kh_email" name="kh_email" value="">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md">
+                                    <label for="kh_trangthai">Trạng thái <span style="color:red;">*</span></label>
+                                    <select class="form-control" id="kh_trangthai" name="kh_trangthai">
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Khoá</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md">
+                                    <label for="kh_quantri">Quyền của người dùng <span style="color:red;">*</span></label>
+                                    <select class="form-control" id="kh_quantri" name="kh_quantri">
+                                        <option value="0">Khách hàng</option>
+                                        <option value="1">Quản trị</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="kh_matkhau2">Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" id="kh_matkhau2" name="kh_matkhau2" value="">
+                        <div class="form-group col-lg">
+                            <h5>Thông tin Chi tiết</h5>
+                            <div class="form-group">
+                                <label for="kh_diachi">Địa chỉ </label>
+                                <input type="text" class="form-control" id="kh_diachi" name="kh_diachi" value="">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="kh_ngaysinh">Ngày sinh </label>
+                                    <input type="text" class="form-control" id="kh_ngaysinh" name="kh_ngaysinh" value="">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="kh_thangsinh">Tháng sinh </label>
+                                    <input type="text" class="form-control" id="kh_thangsinh" name="kh_thangsinh" value="">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="kh_ngaysinh">Năm sinh </label>
+                                    <input type="text" class="form-control" id="kh_namsinh" name="kh_namsinh" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="kh_cmnd">CMND</label>
+                                <input type="text" class="form-control" id="kh_cmnd" name="kh_cmnd" value="">
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-10">
-                            <label for="kh_ten">Tên</label>
-                            <input type="text" class="form-control" id="kh_ten" name="kh_ten" value="">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="kh_gioitinh">Giới tính</label>
-                            <select class="form-control" id="kh_gioitinh" name="kh_gioitinh">
-                                <option value="1">Nam</option>
-                                <option value="0">Nữ</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="kh_diachi">Địa chỉ</label>
-                        <input type="text" class="form-control" id="kh_diachi" name="kh_diachi" value="">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="kh_dienthoai">Điện thoại</label>
-                            <input type="text" class="form-control" id="kh_dienthoai" name="kh_dienthoai" value="">
-                        </div>
-                        <div class="form-group col">
-                            <label for="kh_email">Email</label>
-                            <input type="text" class="form-control" id="kh_email" name="kh_email" value="">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="kh_ngaysinh">Ngày sinh</label>
-                            <input type="text" class="form-control" id="kh_ngaysinh" name="kh_ngaysinh" value="">
-                        </div>
-                        <div class="form-group col">
-                            <label for="kh_thangsinh">Tháng sinh</label>
-                            <input type="text" class="form-control" id="kh_thangsinh" name="kh_thangsinh" value="">
-                        </div>
-                        <div class="form-group col">
-                            <label for="kh_ngaysinh">Năm sinh</label>
-                            <input type="text" class="form-control" id="kh_namsinh" name="kh_namsinh" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="kh_cmnd">CMND</label>
-                        <input type="text" class="form-control" id="kh_cmnd" name="kh_cmnd" value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="kh_trangthai">Trạng thái</label>
-                        <select class="form-control" id="kh_trangthai" name="kh_trangthai">
-                            <option value="1">Hoạt động</option>
-                            <option value="0">Khoá</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="kh_quantri">Quyền của người dùng</label>
-                        <select class="form-control" id="kh_quantri" name="kh_quantri">
-                            <option value="0">Khách hàng</option>
-                            <option value="1">Quản trị</option>
-                        </select>
-                    </div>
+
+
+
                     <button class="btn btn-primary" name="btnSave">Thêm</button>
                 </form>
                 <?php
                 if (isset($_POST['btnSave'])) {
                     // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
-                    $kh_tendangnhap = $_POST['kh_tendangnhap'];
-                    $kh_matkhau = $_POST['kh_matkhau'];
-                    $kh_matkhau2 = $_POST['kh_matkhau2'];
-                    $kh_ten = $_POST['kh_ten'];
-                    $kh_gioitinh = $_POST['kh_gioitinh'];
-                    $kh_diachi = $_POST['kh_diachi'];
-                    $kh_dienthoai = $_POST['kh_dienthoai'];
-                    $kh_email = $_POST['kh_email'];
-                    $kh_ngaysinh = $_POST['kh_ngaysinh'];
-                    $kh_thangsinh = $_POST['kh_thangsinh'];
-                    $kh_namsinh = $_POST['kh_namsinh'];
-                    $kh_cmnd = $_POST['kh_cmnd'];
-                    $kh_trangthai = $_POST['kh_trangthai'];
-                    $kh_quantri = $_POST['kh_quantri'];
+                    $kh_tendangnhap =  addslashes($_POST['kh_tendangnhap']);
+                    $kh_matkhau =  md5(addslashes($_POST['kh_matkhau']));
+                    $kh_matkhau2 =  md5(addslashes($_POST['kh_matkhau2']));
+                    $kh_ten =  addslashes($_POST['kh_ten']);
+                    $kh_gioitinh =  addslashes($_POST['kh_gioitinh']);
+                    $kh_diachi =  addslashes($_POST['kh_diachi']);
+                    $kh_dienthoai =  addslashes($_POST['kh_dienthoai']);
+                    $kh_email =  addslashes($_POST['kh_email']);
+                    $kh_ngaysinh =  addslashes($_POST['kh_ngaysinh']);
+                    $kh_thangsinh =  addslashes($_POST['kh_thangsinh']);
+                    $kh_namsinh =  addslashes($_POST['kh_namsinh']);
+                    $kh_cmnd =  addslashes($_POST['kh_cmnd']);
+                    $kh_trangthai =  addslashes($_POST['kh_trangthai']);
+                    $kh_quantri =  addslashes($_POST['kh_quantri']);
 
                     // Kiểm tra ràng buộc dữ liệu (Validation)
                     // Tạo biến lỗi để chứa thông báo lỗi
@@ -167,13 +182,20 @@ if (session_id() === '') {
                             'rule' => 'required',
                             'rule_value' => true,
                             'value' => $kh_dienthoai,
-                            'msg' => 'Vui lòng nhập lại mật khẩu'
+                            'msg' => 'Vui lòng nhập số điện thoại'
                         ];
                     }
-
+                    if (empty($kh_email)) {
+                        $errors['kh_email'][] = [
+                            'rule' => 'required',
+                            'rule_value' => true,
+                            'value' => $kh_email,
+                            'msg' => 'Vui lòng nhập email'
+                        ];
+                    }
                 }
                 ?>
-                <?php if ( isset($_POST['btnSave']) && isset($errors) && (!empty($errors))  ) : ?>
+                <?php if (isset($_POST['btnSave']) && isset($errors) && (!empty($errors))) : ?>
                     <div id="errors-container" class="alert alert-danger face my-2" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -193,9 +215,11 @@ if (session_id() === '') {
                     isset($_POST['btnSave'])
                     && (!isset($errors) || (empty($errors)))
                 ) {
-
+                    include_once(__DIR__ . '/../../../dbconnect.php');
                     $sql = <<<EOT
-                    
+                    INSERT INTO khachhang
+                        (kh_tendangnhap, kh_matkhau, kh_ten, kh_gioitinh, kh_diachi, kh_dienthoai, kh_email, kh_ngaysinh, kh_thangsinh, kh_namsinh, kh_cmnd, kh_trangthai, kh_quantri)
+                        VALUES ('$kh_tendangnhap', '$kh_matkhau', '$kh_ten', $kh_gioitinh, '$kh_diachi', '$kh_dienthoai', '$kh_email', $kh_ngaysinh, $kh_thangsinh, $kh_namsinh, '$kh_cmnd', $kh_trangthai, $kh_quantri)
 EOT;
                     mysqli_query($conn, $sql);
                     mysqli_close($conn);
@@ -214,17 +238,32 @@ EOT;
         $(document).ready(function() {
             $("#frmCreate").validate({
                 rules: {
-                    sp_ten: {
+                    kh_tendangnhap: {
                         required: true,
-                        minlength: 5,
-                        maxlength: 50
+                        rangelength: [6, 12]
                     },
+                    kh_matkhau: {
+                        required: true,
+                        rangelength: [6, 12]
+                    },
+                    kh_matkhau2: {
+                        required: true,
+                        equalTo: "#kh_matkhau",
+                        rangelength: [6, 12]
+                    },
+                    kh_dienthoai: {
+                        required: true,
+                        number: true,
+                        rangelength: [10, 11]
+                    },
+                    kh_email: {
+                        required: true,
+                        email: true
+                    }
                 },
                 messages: {
-                    sp_ten: {
-                        required: "Vui lòng nhập tên sản phẩm",
-                        min: "Tên sản phẩm phải có ít nhất 5 ký tự",
-                        maxlength: "Tên sản phẩm không được vượt quá 50 ký tự"
+                    kh_dienthoai: {
+                        required: "Vui lòng nhập số điện thoại",
                     },
                 },
                 errorElement: "em",

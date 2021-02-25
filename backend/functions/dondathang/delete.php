@@ -6,5 +6,6 @@ if (isset($_GET['sp_ma'])) {
         DELETE FROM sanpham WHERE sp_ma='$sp_ma'
 EOT;
     mysqli_query($conn, $sql);
+    mysqli_close($conn);
     header('Location: ./');
 }
