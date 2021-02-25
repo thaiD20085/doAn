@@ -31,6 +31,9 @@
       <li class="nav-item">
         <a href="/project-D20085/backend/functions/khuyenmai/">Khuyến mãi</a>
       </li>
+      <li class="nav-item">
+        <a href="/project-D20085/backend/functions/hinhthucthanhtoan/">Hình thức thanh toán</a>
+      </li>
       <!-- Menu Chuyên mục sản phẩm -->
       <li class="nav-item">
         <a href="#shop_categoriesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
