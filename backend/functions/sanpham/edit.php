@@ -58,8 +58,8 @@ if (session_id() === '') {
                         $km_tomtat = sprintf(
                             "Khuyến mãi %s, nội dung: %s, thời gian: %s-%s",
                             $row_km['km_ten'],
-                            $row_km['kh_noidung'],
-                            date('d/m/Y', strtotime($row_km['kh_tungay'])),
+                            $row_km['km_noidung'],
+                            date('d/m/Y', strtotime($row_km['km_tungay'])),
                             date('d/m/Y', strtotime($row_km['km_denngay']))
                         );
                     }
@@ -83,41 +83,43 @@ EOT;
                 <form action="" method="post" name="frmCreate" id="frmCreate">
                     <div class="form-group">
                         <label for="sp_ma">Mã Sản phẩm</label>
-                        <input type="text" class="form-control" id="sp_ma" name="sp_ma" placeholder="Tên Sản phẩm" value="<?=$data_sp['sp_ma'];?>" readonly>
+                        <input type="text" class="form-control" id="sp_ma" name="sp_ma" placeholder="Tên Sản phẩm" value="<?= $data_sp['sp_ma']; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="sp_ten">Tên Sản phẩm</label>
-                        <input type="text" class="form-control" id="sp_ten" name="sp_ten" placeholder="Tên Sản phẩm" value="<?=$data_sp['sp_ten'];?>">
+                        <input type="text" class="form-control" id="sp_ten" name="sp_ten" placeholder="Tên Sản phẩm" value="<?= $data_sp['sp_ten']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="sp_gia">Giá Sản phẩm</label>
-                        <input type="text" class="form-control" id="sp_gia" name="sp_gia" placeholder="Giá Sản phẩm" value="<?=$data_sp['sp_gia'];?>">
+                        <input type="text" class="form-control" id="sp_gia" name="sp_gia" placeholder="Giá Sản phẩm" value="<?= $data_sp['sp_gia']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="sp_giacu">Giá cũ Sản phẩm</label>
-                        <input type="text" class="form-control" id="sp_giacu" name="sp_giacu" placeholder="Giá cũ Sản phẩm" value="<?=$data_sp['sp_giacu'];?>">
+                        <input type="text" class="form-control" id="sp_giacu" name="sp_giacu" placeholder="Giá cũ Sản phẩm" value="<?= $data_sp['sp_giacu']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="sp_mota_ngan">Mô tả ngắn</label>
-                        <textarea class="form-control" id="sp_mota_ngan" name="sp_mota_ngan"><?=$data_sp['sp_mota_ngan'];?></textarea>
+                        <textarea class="form-control" id="sp_mota_ngan" name="sp_mota_ngan"><?= $data_sp['sp_mota_ngan']; ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="sp_mota_chitiet">Mô tả chi tiết</label>
-                        <textarea class="form-control" id="sp_mota_chitiet" name="sp_mota_chitiet"><?=$data_sp['sp_mota_chitiet'];?></textarea>
+                        <textarea class="form-control" id="sp_mota_chitiet" name="sp_mota_chitiet"><?= $data_sp['sp_mota_chitiet']; ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="sp_ngaycapnhat">Ngày cập nhật</label>
-                        <input type="text" class="form-control" id="sp_ngaycapnhat" name="sp_ngaycapnhat" placeholder="Ngày cập nhật Sản phẩm" value="<?=$data_sp['sp_ngaycapnhat'];?>">
+                        <input type="text" class="form-control" id="sp_ngaycapnhat" name="sp_ngaycapnhat" placeholder="Ngày cập nhật Sản phẩm" value="<?= $data_sp['sp_ngaycapnhat']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="sp_soluong">Số lượng</label>
-                        <input type="text" class="form-control" id="sp_soluong" name="sp_soluong" placeholder="Số lượng Sản phẩm" value="<?=$data_sp['sp_ma'];?>">
+                        <input type="text" class="form-control" id="sp_soluong" name="sp_soluong" placeholder="Số lượng Sản phẩm" value="<?= $data_sp['sp_ma']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="lsp_ma">Loại sản phẩm</label>
                         <select name="lsp_ma" id="lsp_ma" class="form-control">
                             <?php foreach ($data_lsp as $lsp) : ?>
-                                <option value="<?= $lsp['lsp_ma'] ?>" <?php if($lsp['lsp_ma'] == $data_sp['lsp_ma'] ){echo ' selected ';}?>><?= $lsp['lsp_ten'] ?></option>
+                                <option value="<?= $lsp['lsp_ma'] ?>" <?php if ($lsp['lsp_ma'] == $data_sp['lsp_ma']) {
+                                                                            echo ' selected ';
+                                                                        } ?>><?= $lsp['lsp_ten'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -125,7 +127,9 @@ EOT;
                         <label for="nsx_ma">Nhà sản xuất</label>
                         <select class="form-control" id="nsx_ma" name="nsx_ma">
                             <?php foreach ($data_nsx as $nsx) : ?>
-                                <option value="<?= $nsx['nsx_ma'] ?>" <?php if($nsx['nsx_ma'] == $data_sp['nsx_ma'] ){echo ' selected ';}?>><?= $nsx['nsx_ten'] ?></option>
+                                <option value="<?= $nsx['nsx_ma'] ?>" <?php if ($nsx['nsx_ma'] == $data_sp['nsx_ma']) {
+                                                                            echo ' selected ';
+                                                                        } ?>><?= $nsx['nsx_ten'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -135,7 +139,9 @@ EOT;
                         <select class="form-control" id="km_ma" name="km_ma">
                             <option value="">Chọn loại khuyến mãi...</option>
                             <?php foreach ($data_km as $km) : ?>
-                                <option value="<?= $km['km_ma'] ?>" <?php if($km['km_ma'] == $data_sp['km_ma'] ){echo ' selected ';}?> ><?= $km['km_tomtat'] ?></option>
+                                <option value="<?= $km['km_ma'] ?>" <?php if ($km['km_ma'] == $data_sp['km_ma']) {
+                                                                        echo ' selected ';
+                                                                    } ?>><?= $km['km_tomtat'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -373,7 +379,7 @@ EOT;
                     $sql = <<<EOT
                     UPDATE sanpham
                     SET
-                        sp_ten='sp_ten',
+                        sp_ten='$sp_ten',
                         sp_gia=$sp_gia,
                         sp_giacu=$sp_giacu,
                         sp_mota_ngan='$sp_mota_ngan',

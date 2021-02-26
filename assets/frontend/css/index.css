@@ -1,0 +1,105 @@
+/*Dòng xe*/
+
+#news-con {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+}
+
+#title {
+    color: #FCA311;
+}
+
+.btnLuachon {
+    background: none;
+    border: none;
+}
+
+.btnLuachon:focus {
+    outline: none;
+
+}
+
+/*News*/
+.news-text {
+    padding: 0 6px;
+    margin: 0;
+    height: 50px;
+    line-height: 24px;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+.newscol {
+    padding: 10px;
+}
+
+.news-border {
+    border: 1px solid black;
+    text-shadow: 1px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    color: white;
+}
+/*img zoom*/
+.imgBox {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.imgBox img {
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+.imgBox:hover img {
+    transform: scale(1.1);
+}
+
+/* các lại xe */
+
+.product-title {
+    color: #c6d4ff;
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: black;
+    padding: 10px;
+    opacity: 0;
+}
+
+.product-card {
+    padding: 5% 0;
+}
+
+.product-card:hover {
+    cursor: pointer;
+}
+
+.product-card:hover img {
+    opacity: 0.3;
+    transform: scale(1.2);
+    transition: opacity 0.4s linear, transform 0.4s;
+}
+
+.product-card:hover h2 {
+    display: block;
+    opacity: 0.7;
+    padding: 20% 0;
+    border-radius: 50%;
+    transition: opacity 0.4s linear;
+}
+
+.btn i,
+.btn {
+    color: black;
+    transition: 1s;
+}
+
+.btn:hover,
+.btn:hover i {
+    color: #007bff;
+    transition: 300ms;
+}

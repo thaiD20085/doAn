@@ -1,35 +1,21 @@
 <?php
-// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
-// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
 if (session_id() === '') {
-  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
   session_start();
 }
 ?>
-
+<?php include_once(__DIR__ . '/../layouts/config.php'); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NenTang.vn</title>
-
-  <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
-  <?php include_once(__DIR__ . '/../layouts/styles.php'); ?>
+  <?php include_once(__DIR__ . '/../layouts/head.php'); ?>
 </head>
 
-<body class="d-flex flex-column h-100">
-  <!-- header -->
-  <?php include_once(__DIR__ . '/../layouts/partials/header.php'); ?>
-  <!-- end header -->
-
+<body>
+  <?php include_once(__DIR__ . '/../partials/header.php') ?>
   <div class="container-fluid">
     <div class="row">
-      <!-- sidebar -->
-      <?php include_once(__DIR__ . '/../layouts/partials/sidebar.php'); ?>
-      <!-- end sidebar -->
-
+      <?php include_once(__DIR__ . '/../partials/sidebar.php') ?>
       <main role="main" class="col-md-10 ml-sm-auto px-4 mb-2">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Bảng tin DASHBOARD</h1>
@@ -97,22 +83,17 @@ if (session_id() === '') {
       </main>
     </div>
   </div>
+  <!-- FOOTER -->
+  <?php include_once(__DIR__ . '/../partials/footer.php'); ?>
 
-  <!-- footer -->
-  <?php include_once(__DIR__ . '/../layouts/partials/footer.php'); ?>
-  <!-- end footer -->
+  <?php include_once(__DIR__ . '/../../backend/layouts/scripts.php'); ?>
 
-  <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
-  <?php include_once(__DIR__ . '/../layouts/scripts.php'); ?>
-
-  <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
-  <!-- Liên kết thư viện ChartJS -->
-  <script src="/back_end/assets/vendor/Chart.js/Chart.min.js"></script>
+  <script src="/project-D20085/assets/vendor/Chart.js/Chart.min.js"></script>
   <script>
     $(document).ready(function() {
       // ----------------- Tổng số mặt hàng --------------------------
       function getDuLieuBaoCaoTongSoMatHang() {
-        $.ajax('/back_end/backend/api/baocao-tongsomathang.php', {
+        $.ajax('/project-D20085/backend/api/baocao-tongsomathang.php', {
           success: function(data) {
             var dataObj = JSON.parse(data);
             var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
@@ -131,7 +112,7 @@ if (session_id() === '') {
 
       // ----------------- Tổng số khách hàng --------------------------
       function getDuLieuBaoCaoTongSoKhachHang() {
-        $.ajax('/back_end/backend/api/baocao-tongsokhachhang.php', {
+        $.ajax('/project-D20085/backend/api/baocao-tongsokhachhang.php', {
           success: function(data) {
             var dataObj = JSON.parse(data);
             var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
@@ -150,7 +131,7 @@ if (session_id() === '') {
 
       // ----------------- Tổng số đơn hàng --------------------------
       function getDuLieuBaoCaoTongSoDonHang() {
-        $.ajax('/back_end/backend/api/baocao-tongsodonhang.php', {
+        $.ajax('/project-D20085/backend/api/baocao-tongsodonhang.php', {
           success: function(data) {
             var dataObj = JSON.parse(data);
             var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
@@ -169,7 +150,7 @@ if (session_id() === '') {
 
       // ----------------- Tổng số Góp ý --------------------------
       function getDuLieuBaoCaoTongSoGopY() {
-        $.ajax('/back_end/backend/api/baocao-tongsogopy.php', {
+        $.ajax('/project-D20085/backend/api/baocao-tongsogopy.php', {
           success: function(data) {
             var dataObj = JSON.parse(data);
             var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
@@ -195,7 +176,7 @@ if (session_id() === '') {
 
       function renderChartThongKeLoaiSanPham() {
         $.ajax({
-          url: '/back_end/backend/api/baocao-thongkeloaisanpham.php',
+          url: '/project-D20085/backend/api/baocao-thongkeloaisanpham.php',
           type: "GET",
           success: function(response) {
             var data = JSON.parse(response);
@@ -211,7 +192,7 @@ if (session_id() === '') {
             }
             $objChartThongKeLoaiSanPham = new Chart($chartOfobjChartThongKeLoaiSanPham, {
               // Kiểu biểu đồ muốn vẽ. Các bạn xem thêm trên trang ChartJS
-              type: "bar",
+              type: "pie",
               data: {
                 labels: myLabels,
                 datasets: [{

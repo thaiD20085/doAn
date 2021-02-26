@@ -57,8 +57,8 @@ if (session_id() === '') {
                         $km_tomtat = sprintf(
                             "Khuyến mãi %s, nội dung: %s, thời gian: %s-%s",
                             $row_km['km_ten'],
-                            $row_km['kh_noidung'],
-                            date('d/m/Y', strtotime($row_km['kh_tungay'])),
+                            $row_km['km_noidung'],
+                            date('d/m/Y', strtotime($row_km['km_tungay'])),
                             date('d/m/Y', strtotime($row_km['km_denngay']))
                         );
                     }

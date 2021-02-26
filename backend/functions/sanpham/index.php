@@ -40,10 +40,9 @@ EOT;
                     $km_thongtin = 'Không';
                     if (!empty($row['km_ma'])) {
                         $km_thongtin = sprintf(
-                            "Khuyến mãi %s, nội dung %s, thời gian: %s-%s",
+                            "Khuyến mãi %s, %s-%s",
                             $row['km_ten'],
-                            $row['kh_noidung'],
-                            date('d/m/Y', strtotime($row['kh_tungay'])),
+                            date('d/m/Y', strtotime($row['km_tungay'])),
                             date('d/m/Y', strtotime($row['km_denngay']))
                         );
                     }

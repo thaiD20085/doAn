@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarStation - Đăng ký</title>
+    <link rel="icon" href="../assets/img/logo/logo.png" type="image/gif" sizes="16x16">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/app.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/signup.css" rel="stylesheet" type="text/css" />
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-1 col-md-3"></div>
+            <div class="col-10 col-md-6 signup-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="title mt-2">
+                                <h1 class="font-weight-bold" style="color:#FCA311">Đăng ký</h1>
+                            </div>
+                            <div id="app">
+                                <form name="frmSignin" id="frmSignin" method="post" action="#" novalidate="true"
+                                    @submit="kiemTra">
+                                    <div v-if="thongBaoDangNhap()"></div>
+                                    <div class="form-group input-group-lg">
+                                        <label for="txtUser">Tên đăng nhập <span
+                                                style="color:red">*</span></label>
+                                        <input type="text" class="form-control" name="txtUser" id="txtUser"
+                                            v-model="txtUser" />
+                                        <span style="font-size:80%;color:red"
+                                            v-if="user_error != ''">{{user_error}}</span>
+                                    </div>
+                                    <div class="form-group input-group-lg">
+                                        <label for="txtPassword">Mật khẩu <span
+                                                style="color:red">*</span></label>
+                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword"
+                                            v-model="txtPassword" />
+                                        <span style="font-size:80%;color:red"
+                                            v-if="pass_error != ''">{{pass_error}}</span>
+                                    </div>
+                                    <div class="form-group input-group-lg">
+                                        <label for="txtPassword2">Nhập lại mật khẩu <span
+                                                style="color:red">*</span></label>
+                                        <input type="password" class="form-control" name="txtPassword2"
+                                            id="txtPassword2" v-model="txtPassword2" />
+                                        <span style="font-size:80%;color:red"
+                                            v-if="pass2_error != ''">{{pass2_error}}</span>
+                                    </div>
+                                    <div class="form-group input-group-lg">
+                                        <label for="txtEmail">Email<span
+                                                style="color:red">*</span></label>
+                                        <input type="email" class="form-control" name="txtEmail" id="txtEmail"
+                                            v-model="txtEmail" />
+                                        <span style="font-size:80%;color:red"
+                                            v-if="email_error != ''">{{email_error}}</span>
+                                    </div>
+                                    <div class="form-group input-group-lg">
+                                        <label for="txtPhone">Số điện thoại<span
+                                                style="color:red">*</span></label>
+                                        <input type="text" class="form-control" name="txtPhone" id="txtPhone"
+                                            v-model="txtPhone" />
+                                        <span style="font-size:80%;color:red"
+                                            v-if="phone_error != ''">{{phone_error}}</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-3">Đăng ký</button>
+                                </form>
+                                <a href="../index.html"
+                                    style="position: absolute; right:2px; bottom: 2px; text-decoration: underline;">
+                                    Trang chủ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-1 col-md-3"></div>
+        </div>
+    </div>
+    <script src="../vendor/jQuery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../vendor/vue/vue.js"></script>
+    <script src="../assets/js/signup.js"></script>
+</body>
+
+</html>
