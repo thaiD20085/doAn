@@ -18,9 +18,9 @@
     <table border="0" width="100%" cellspacing="0">
         <tbody>
             <tr>
-                <td align="center"><img src="/php/myhand/assets/shared/img/logo-nentang.jpg" width="100px" height="100px" /></td>
+                <td align="center"><img src="/project-D20085/assets/shared/img/logo.webp" width="100px" height="100px" /></td>
                 <td align="center">
-                    <b style="font-size: 2em;">Nền tảng - Hành trang tới Tương lai</b><br />
+                    <b style="font-size: 2em;">Project - D20085</b><br />
                     <small>Cung cấp kiến thức nền tảng về Lập trình, Thiết kế Web, Cơ sở dữ liệu</small><br />
                     <small>Giúp các bạn có niềm tin, hành trang kiến thức vững vàng trên con đường trở thành Nhà phát
                         triển

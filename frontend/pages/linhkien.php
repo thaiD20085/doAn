@@ -9,7 +9,6 @@ if (session_id() == null) {
 
 <head>
     <?php include_once(__DIR__ . '/../layouts/head.php'); ?>
-    <link href="/project-D20085/assets/frontend/css/index.css" rel="stylesheet" type="text/css" />
     <style>
         .address {
             text-align: left;
@@ -111,6 +110,7 @@ EOT;
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $data[] = array(
+                'sp_ma' => $row['sp_ma'],
                 'sp_ten' => $row['sp_ten'],
                 'sp_gia' => $row['sp_gia'],
                 'sp_mota_ngan' => $row['sp_mota_ngan'],
@@ -206,6 +206,7 @@ EOT;
                     <div class=" grid row row-cols-2 row-cols-md-3" id="products-area">
                         <div class="col item" v-for="sp in sanpham" v-bind:class="[sp.loai,sp.nsx]">
                             <product-item v-bind:obj="sp" v-bind:key="sp.id"></product-item>
+
                         </div>
                     </div>
                 </div>
@@ -250,6 +251,7 @@ EOT;
                     <div class="card-body text-center">
                         <h5 class="card-title" style="height: 1.55rem; overflow: hidden;">{{obj.ten}}</h5>
                         <small><span class="card-text">{{obj.gia}}</span></small>
+                        <a  v-bind:href="'/project-D20085/index.php?direct=chitiet&sp_ma='+obj.ma">Chi tiết</a>
                     </div>
                 </div>
             `,
@@ -261,8 +263,9 @@ EOT;
                     <?php foreach ($data as $sp) : ?> {
                             id: '<?= $count++; ?>',
                             hinh: '/project-D20085/assets/uploads/products/<?php echo $sp['hsp_tentaptin']; ?>',
+                            ma: '<?= $sp['sp_ma']; ?>',
                             ten: '<?= $sp['sp_ten']; ?>',
-                            gia: '<?= $sp['sp_gia']; ?>',
+                            gia: '<?php echo number_format($sp['sp_gia'], 2, ".", ",") . "VNĐ"; ?>',
                             nsx: '<?= $sp['nsx_ma']; ?>',
                             lsp: '<?= $sp['lsp_ma']; ?>',
                             motangan: '<?= $sp['sp_mota_ngan']; ?>',

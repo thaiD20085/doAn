@@ -35,8 +35,7 @@ EOT;
                     $data[] = array(
                         'gy_ma' => $row['gy_ma'],
                         'gy_hoten' => $row['gy_hoten'],
-                        'gy_lienlac' => $row['gy_email'].'<br />'.$row['gy_email'].'<br />'.$row['gy_diachi'],
-                        'gy_dienthoai' => $row['gy_dienthoai'],
+                        'gy_lienlac' => $row['gy_email'].'<br />'.$row['gy_dienthoai'].'<br />'.$row['gy_diachi'],
                         'gy_tieude' => $row['gy_tieude'],
                         'gy_noidung' => $row['gy_noidung'],
                         'gy_ngaygopy' => date('d/m/Y H:i:s', strtotime($row['gy_ngaygopy'])),
@@ -68,15 +67,12 @@ EOT;
                                         $count++ ?></td>
                                     <td><?= $gy['gy_ma'] ?></td>
                                     <td><?= $gy['gy_hoten'] ?></td>
-                                    <td><?= $gy['gy_email'] ?></td>
-                                    <td><?= $gy['gy_diachi'] ?></td>
-                                    <td><?= $gy['gy_dienthoai'] ?></td>
+                                    <td><?= $gy['gy_lienlac'] ?></td>
                                     <td><?= $gy['gy_tieude'] ?></td>
                                     <td><?= $gy['gy_noidung'] ?></td>
                                     <td><?= $gy['gy_ngaygopy'] ?></td>
                                     <td><?= $gy['cdgy_tt'] ?></td>
                                     <td>
-                                        <a href="edit.php?gy_ma=<?= $gy['gy_ma'] ?>" class="btn btn-warning">Sửa</a>
                                         <a href="delete.php?gy_ma=<?= $gy['gy_ma'] ?>" class="btn btn-danger">Xoá</a>
                                     </td>
                                 </tr>

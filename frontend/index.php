@@ -2,6 +2,7 @@
 if (session_id() == null) {
     session_start();
 }
+include_once(__DIR__.'/../dbconnect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +104,7 @@ if (session_id() == null) {
                     <div class="cols newscol ">
                         <div class="news-border">
                             <div class="imgBox">
-                                <img src="/project-D20085/assets/frontend/img/news/hot_news.jpg" class="img-fluid"  />
+                                <img src="/project-D20085/assets/frontend/img/news/hot_news.jpg" class="img-fluid" />
                             </div>
                             <h5 class="text-center">RTX 3060 Gaming OC và EAGLE </h5>
                             <a href="#" class="btn text-right w-100">Xem thêm <i class="fa fa-caret-right" aria-hidden="true"></i></a>

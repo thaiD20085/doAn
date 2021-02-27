@@ -18,7 +18,7 @@ if (session_id() === '') {
             <?php include_once(__DIR__ . '/../../partials/sidebar.php') ?>
             <main role="main" class=" col-md-10 ml-sm-auto px-4 mb-2">
                 <div>
-                    <h1 class="h2">Thêm mới Sản phẩm</h1>
+                    <h1 class="h2">Thêm mới</h1>
                 </div>
                 <a class="btn btn-primary" href="./">Quay lại</a>
 
@@ -239,22 +239,6 @@ if (session_id() === '') {
                         </ul>
                     </div>
                 <?php endif; ?>
-
-                <?php
-                if (
-                    isset($_POST['btnSave'])
-                    && (!isset($errors) || (empty($errors)))
-                ) {
-
-                    $sql = <<<EOT
-                    INSERT INTO sanpham (sp_ten, sp_gia, sp_giacu, sp_mota_ngan, sp_mota_chitiet, sp_ngaycapnhat, sp_soluong, lsp_ma, nsx_ma, km_ma) 
-                    VALUES ('$sp_ten', $sp_gia, $sp_giacu, '$sp_mota_ngan', '$sp_mota_chitiet', '$sp_ngaycapnhat', $sp_soluong, $lsp_ma, $nsx_ma, $km_ma);
-EOT;
-                    mysqli_query($conn, $sql);
-                    mysqli_close($conn);
-                    echo "<script>location.href = 'index.php';</script>";
-                }
-                ?>
             </main>
         </div>
     </div>
