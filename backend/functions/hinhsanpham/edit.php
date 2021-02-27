@@ -79,7 +79,7 @@ EOT;
                             echo 'File Upload Bị Lỗi';
                             die;
                         } else {
-                            $old_file = $upload_dir . $subdir . $hinhsanphamRow['hsp_tentaptin'];
+                            $old_file = $upload_dir . $subdir . $data['hsp_tentaptin'];
                             if (file_exists($old_file)) {
                                 unlink($old_file);
                             }

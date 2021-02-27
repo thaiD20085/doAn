@@ -79,6 +79,14 @@ if (session_id() == null) {
                         </div>
                     </div>
                 </div>
+                <div id="thietbi">
+                    <div class="row row-cols-1 row-cols-md-3">
+                        <div class="col d-flex align-items-center product-card" v-for="tb in thietbi" v-if="tb.id < 4">
+                            <img :src="tb.hinh" class="w-100 img-fluid" :alt="tb.ten" />
+                            <h2 class="product-title">{{tb.ten}}</h2>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- news  -->
 
@@ -90,25 +98,27 @@ if (session_id() == null) {
                     <h3 class="font-weight-bolder" id="title">TIN TỨC</h3>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-2">
-                <div class="cols newscol ">
-                    <div class="news-border">
-                        <div class="imgBox">
-                            <img src="/project-D20085/assets/frontend/img/news/hot_news.jpg" class="img-fluid" />
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2">
+                    <div class="cols newscol ">
+                        <div class="news-border">
+                            <div class="imgBox">
+                                <img src="/project-D20085/assets/frontend/img/news/hot_news.jpg" class="img-fluid"  />
+                            </div>
+                            <h5 class="text-center">RTX 3060 Gaming OC và EAGLE </h5>
+                            <a href="#" class="btn text-right w-100">Xem thêm <i class="fa fa-caret-right" aria-hidden="true"></i></a>
                         </div>
-                        <h5 class="text-center">VINFAST PRESIDENT V8 SUV REVEALED</h5>
-                        <a href="#" class="btn text-right w-100">Xem thêm <i class="fa fa-caret-right" aria-hidden="true"></i></a>
                     </div>
-                </div>
-                <div class="cols newscol">
-                    <div class="row row-cols-2">
-                        <div class="col" v-for="nw in news">
-                            <div class="news-border">
-                                <div class="imgBox">
-                                    <img :src="nw.hinh" class="img-fluid" />
+                    <div class="cols newscol">
+                        <div class="row row-cols-2">
+                            <div class="col" v-for="nw in news">
+                                <div class="news-border">
+                                    <div class="imgBox">
+                                        <img :src="nw.hinh" class="img-fluid" width="100%" />
+                                    </div>
+                                    <p class="news-text">{{nw.chitiet}}</p>
+                                    <a href="#" class="btn text-right w-100">Xem thêm <i class="fa fa-caret-right" aria-hidden="true"></i></a>
                                 </div>
-                                <p class="news-text">{{nw.chitiet}}</p>
-                                <a href="#" class="btn text-right w-100">Xem thêm <i class="fa fa-caret-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -128,13 +138,14 @@ if (session_id() == null) {
                 $('#linhkien').show(500);
                 $(this).css('color', '#007bff');
                 $('#btnLuachon2').css('color', '#000');
-                $('#bike').hide(500);
+                $('#thietbi').hide(500);
             });
+            $('#thietbi').hide();
             $('#btnLuachon2').click(function() {
                 $('#linhkien').hide(500);
                 $(this).css('color', '#007bff');
                 $('#btnLuachon1').css('color', '#000');
-                $('#bike').show(500);
+                $('#thietbi').show(500);
             });
 
         });
@@ -157,25 +168,41 @@ if (session_id() == null) {
                         ten: 'CPU',
                     },
                 ],
+                thietbi: [{
+                        id: '1',
+                        hinh: '/project-D20085/assets/frontend/img/mathang/keyboard.webp',
+                        ten: 'Bàn phím',
+                    },
+                    {
+                        id: '2',
+                        hinh: '/project-D20085/assets/frontend/img/mathang/mouse.webp',
+                        ten: 'Chuột',
+                    },
+                    {
+                        id: '3',
+                        hinh: '/project-D20085/assets/frontend/img/mathang/monitor.webp',
+                        ten: 'Màn hình',
+                    },
+                ],
                 news: [{
                         id: '1',
                         hinh: '/project-D20085/assets/frontend/img/news/new_1.jpg',
-                        chitiet: 'Sở hữu ngay bộ phụ kiện siêu "chất" của Vespa.',
+                        chitiet: 'Trên tay card đồ họa Colorful iGame RTX 3060 ',
                     },
                     {
                         id: '2',
                         hinh: '/project-D20085/assets/frontend/img/news/new_2.jpg',
-                        chitiet: 'GIÁ TỐT XE SANG - NHẬN ƯU ĐÃI VÀNG: RINH VINFAST CHỈ TỪ 37 TRIỆU ĐỒNG',
+                        chitiet: 'Microsoft tung bản cập nhật Windows 10 sửa lỗi tuột fps khi chơi game',
                     },
                     {
                         id: '3',
                         hinh: '/project-D20085/assets/frontend/img/news/new_3.jpg',
-                        chitiet: 'Honda Việt Nam giới thiệu phiên bản hoàn toàn mới mẫu xe Sh mode 125cc',
+                        chitiet: 'Chiến lược gia của Intel tuyên bố CPU thế hệ 11 sẽ giúp SSD PCIe 4.0 tăng 11% hiệu năng so với CPU AMD',
                     },
                     {
                         id: '4',
                         hinh: '/project-D20085/assets/frontend/img/news/new_4.jpg',
-                        chitiet: 'Honda Việt Nam giới thiệu hai mẫu xe phân khối lớn hoàn toàn mới CBR1000RR-R Fireblade & CBR1000RR-R Fireblade SP',
+                        chitiet: 'Chuột lỗ nhìn vậy thôi chứ cũng nhiều cái hay lắm đấy',
                     },
 
                 ],

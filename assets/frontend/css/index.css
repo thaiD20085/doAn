@@ -1,4 +1,4 @@
-/*Dòng xe*/
+
 
 #news-con {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
@@ -57,7 +57,6 @@
     transform: scale(1.1);
 }
 
-/* các lại xe */
 
 .product-title {
     color: #c6d4ff;

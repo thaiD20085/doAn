@@ -26,6 +26,9 @@
         <a href="/project-D20085/backend/functions/sanpham/">Sản phẩm</a>
       </li>
       <li class="nav-item">
+        <a href="/project-D20085/backend/functions/hinhsanpham/">Hình sản phẩm</a>
+      </li>
+      <li class="nav-item">
         <a href="/project-D20085/backend/functions/dondathang/">Đơn đặt hàng</a>
       </li>
       <li class="nav-item">

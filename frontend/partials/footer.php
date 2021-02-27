@@ -126,7 +126,7 @@
                             <a href="#">Thông tin công ty</a>
                         </li>
                         <li>
-                            Bản quyền bởi &copy;<a href="index.html">Linh kiện bi tính</a>
+                            Bản quyền bởi &copy;<a href="index.html">Linh kiện vi tính</a>
                         </li>
                     </ul>
                 </div>

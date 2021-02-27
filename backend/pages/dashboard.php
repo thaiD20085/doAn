@@ -197,9 +197,8 @@ if (session_id() === '') {
                 labels: myLabels,
                 datasets: [{
                   data: myData,
-                  borderColor: "#9ad0f5",
-                  backgroundColor: "#9ad0f5",
-                  borderWidth: 1
+                  borderWidth: 1,
+                  backgroundColor: ["#FF6384", "#FFCD56", "#36A2EB","#FFAD5C","#E1D1FF","#FF6384", "#FFCD56", "#36A2EB","#FFAD5C"], 
                 }]
               },
               // Cấu hình dành cho biểu đồ của ChartJS
