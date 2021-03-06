@@ -14,8 +14,8 @@
 
 
 -- Dumping database structure for web2
-CREATE DATABASE IF NOT EXISTS `web2` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `web2`;
+CREATE DATABASE IF NOT EXISTS `doqqwyfj_web2` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `doqqwyfj_web2`;
 
 -- Dumping structure for table web2.chudegopy
 CREATE TABLE IF NOT EXISTS `chudegopy` (
